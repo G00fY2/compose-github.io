@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
   kotlin("multiplatform") version "1.5.30"
   id("org.jetbrains.compose") version "1.0.0-alpha4-build328"
-  id("io.gitlab.arturbosch.detekt") version "1.18.0"
+  id("io.gitlab.arturbosch.detekt") version "1.18.1"
 }
 
 kotlin {
