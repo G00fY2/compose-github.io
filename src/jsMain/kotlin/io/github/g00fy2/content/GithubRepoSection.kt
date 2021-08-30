@@ -56,7 +56,9 @@ fun GithubRepos(githubRepos: List<GitHubRepo>) {
     Div(attrs = {
       classes(WtRows.wtRow, WtRows.wtRowSizeM, WtOffset.wtTopOffset48)
     }) {
-      githubRepos.map { CardWithListPresentation(title = it.full_name, list = it.description.split(".")) }.forEach { CardWithList(it) }
+      githubRepos.map {
+        CardWithListPresentation(title = it.full_name, list = it.description.split("."))
+      }.forEach { CardWithList(it) }
     }
   }
 }
