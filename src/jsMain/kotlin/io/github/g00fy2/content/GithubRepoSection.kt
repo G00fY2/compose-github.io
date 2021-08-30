@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import io.github.g00fy2.components.Card
 import io.github.g00fy2.components.ContainerInSection
 import io.github.g00fy2.components.LinkOnCard
+import io.github.g00fy2.model.entities.GitHubRepo
 import io.github.g00fy2.style.WtCols
 import io.github.g00fy2.style.WtOffset
 import io.github.g00fy2.style.WtRows
@@ -18,31 +19,8 @@ import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.dom.Ul
 
-private fun createAboutComposeWebCards(): List<CardWithListPresentation> {
-  return listOf(
-    CardWithListPresentation(
-      title = "Composable DOM API",
-      list = listOf(
-        "Express your design and layout in terms of DOM elements and HTML tags",
-        "Use a type-safe HTML DSL to build your UI representation",
-        "Get full control over the look and feel of your application by creating stylesheets with a typesafe CSS DSL",
-        "Integrate with other JavaScript libraries via DOM subtrees"
-      )
-    ),
-    CardWithListPresentation(
-      title = "Multiplatform Widgets With Web Support",
-      list = listOf(
-        "Use and build Compose widgets that work on Android, Desktop, and Web by utilizing Kotlin's expect-actual " +
-          "mechanisms to provide platform-specific implementations",
-        "Experiment with a set of layout primitives and APIs that mimic the features you already know from Compose " +
-          "for Desktop and Android"
-      )
-    )
-  )
-}
-
 @Composable
-fun ComposeWebLibraries() {
+fun GithubRepos(githubRepos: List<GitHubRepo>) {
   ContainerInSection(WtSections.wtSectionBgGrayLight) {
     H2(attrs = { classes(WtText.wtH2) }) {
       Text("Building user interfaces with Compose for Web")
@@ -78,7 +56,7 @@ fun ComposeWebLibraries() {
     Div(attrs = {
       classes(WtRows.wtRow, WtRows.wtRowSizeM, WtOffset.wtTopOffset48)
     }) {
-      createAboutComposeWebCards().forEach { CardWithList(it) }
+      githubRepos.map { CardWithListPresentation(title = it.full_name, list = it.description.split(".")) }.forEach { CardWithList(it) }
     }
   }
 }

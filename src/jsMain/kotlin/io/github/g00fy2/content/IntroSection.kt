@@ -2,6 +2,7 @@ package io.github.g00fy2.content
 
 import androidx.compose.runtime.Composable
 import io.github.g00fy2.components.ContainerInSection
+import io.github.g00fy2.model.entities.GitHubUser
 import io.github.g00fy2.style.AppStylesheet
 import io.github.g00fy2.style.WtCols
 import io.github.g00fy2.style.WtDisplay
@@ -13,8 +14,10 @@ import org.jetbrains.compose.web.attributes.target
 import org.jetbrains.compose.web.css.AlignSelf
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.alignSelf
+import org.jetbrains.compose.web.css.borderRadius
 import org.jetbrains.compose.web.css.display
 import org.jetbrains.compose.web.css.height
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.whiteSpace
 import org.jetbrains.compose.web.css.width
@@ -27,7 +30,7 @@ import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun Intro() {
+fun Intro(githubUser: GitHubUser?) {
   ContainerInSection {
     Div({
       classes(WtRows.wtRow, WtRows.wtRowSizeM, WtRows.wtRowSmAlignItemsCenter)
@@ -39,7 +42,12 @@ fun Intro() {
           alignSelf(AlignSelf.Start)
         }
       }) {
-        Img(src = "i1.svg", attrs = { classes(AppStylesheet.composeLogo) })
+        Img(src = githubUser?.avatar_url ?: "", attrs = {
+          classes(AppStylesheet.composeLogo)
+          style {
+            borderRadius(50.percent)
+          }
+        })
       }
 
       Div({
@@ -59,7 +67,7 @@ fun Intro() {
               whiteSpace("nowrap")
             }
           }) {
-            Text("Web")
+            Text(githubUser?.name ?: "")
 
             Span(attrs = { classes(AppStylesheet.composeTitleTag) }) {
               Text("Technology preview")
@@ -69,7 +77,7 @@ fun Intro() {
         Div({
           classes(WtDisplay.wtDisplayMdNone)
         }) {
-          IntroAboutComposeWeb()
+          IntroAboutComposeWeb(githubUser)
         }
       }
     }
@@ -77,13 +85,13 @@ fun Intro() {
     Div(attrs = {
       classes(WtDisplay.wtDisplayNone, WtDisplay.wtDisplayMdBlock)
     }) {
-      IntroAboutComposeWeb()
+      IntroAboutComposeWeb(githubUser)
     }
   }
 }
 
 @Composable
-private fun IntroAboutComposeWeb() {
+private fun IntroAboutComposeWeb(githubUser: GitHubUser?) {
   Div({
     classes(WtRows.wtRow, WtRows.wtRowSizeM)
   }) {
@@ -92,7 +100,7 @@ private fun IntroAboutComposeWeb() {
       classes(WtCols.wtCol9, WtCols.wtColMd9, WtCols.wtColSm12)
     }) {
       P({ classes(WtText.wtSubtitle2, WtOffset.wtTopOffset24) }) {
-        Text("Reactive web UIs for Kotlin, based on Google's ")
+        Text(githubUser?.bio ?: "")
 
         A(href = "https://developer.android.com/jetpack/compose", attrs = {
           classes(WtText.wtLink)
