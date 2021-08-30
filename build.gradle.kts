@@ -39,10 +39,10 @@ extensions.configure<NodeJsRootExtension> {
 
 // configure detekt
 extensions.configure<DetektExtension> {
-  toolVersion = "1.18.0"
+  toolVersion = "1.18.1"
   config = files("$rootDir/detekt.yml")
   buildUponDefaultConfig = true
 }
 dependencies {
-  "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.18.0")
+  "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.18.1")
 }
