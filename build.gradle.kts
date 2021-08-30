@@ -1,6 +1,6 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
   kotlin("multiplatform") version "1.5.30"
@@ -25,7 +25,7 @@ kotlin {
 }
 
 // kotlin compiler options
-tasks.withType<KotlinCompile>().configureEach {
+tasks.withType<Kotlin2JsCompile>().configureEach {
   kotlinOptions {
     allWarningsAsErrors = true
     freeCompilerArgs = freeCompilerArgs + "-progressive"
