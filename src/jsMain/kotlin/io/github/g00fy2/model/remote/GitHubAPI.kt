@@ -1,4 +1,4 @@
-package io.github.g00fy2.remote
+package io.github.g00fy2.model.remote
 
 import io.github.g00fy2.BuildConfig
 import io.github.g00fy2.model.entities.GitHubRepo
@@ -8,13 +8,12 @@ import kotlinx.coroutines.await
 import org.w3c.fetch.Headers
 import org.w3c.fetch.RequestInit
 
-val headers by lazy {
+private fun getHeaders() =
   Headers().apply { append("Accept", "application/vnd.github.v${BuildConfig.GITHUB_API_VERSION}+json") }
-}
 
 suspend fun fetchGitHubUser(username: String): GitHubUser {
   val response = window
-    .fetch("${BuildConfig.GITHUB_API_URL}/users/$username", RequestInit(headers = headers))
+    .fetch("${BuildConfig.GITHUB_API_URL}/users/$username", RequestInit(headers = getHeaders()))
     .await()
     .json()
     .await()
@@ -34,7 +33,7 @@ suspend fun fetchTopGitHubRepos(username: String, filterArchived: Boolean = true
   val response = window
     .fetch(
       "${BuildConfig.GITHUB_API_URL}/users/$username/repos?sort=updated&per_page=100",
-      RequestInit(headers = headers)
+      RequestInit(headers = getHeaders())
     )
     .await()
     .json()
