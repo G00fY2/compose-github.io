@@ -8,6 +8,7 @@ plugins {
   id("org.jetbrains.compose") version "1.0.0-alpha4-build328"
   id("com.codingfeline.buildkonfig") version "0.9.0"
   id("io.gitlab.arturbosch.detekt") version "1.18.1"
+  id("com.github.ben-manes.versions") version "0.39.0"
 }
 
 kotlin {
@@ -59,4 +60,9 @@ extensions.configure<DetektExtension> {
 }
 dependencies {
   "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.18.1")
+}
+
+// configure dependency updates
+tasks.dependencyUpdates.configure {
+  gradleReleaseChannel = "current"
 }
