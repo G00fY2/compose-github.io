@@ -32,8 +32,8 @@ fun main() {
     var githubRepos by remember { mutableStateOf(emptyList<GitHubRepo>()) }
 
     LaunchedEffect(true) {
-      githubUser = fetchGitHubUser("G00fY2")
-      githubRepos = fetchTopGitHubRepos("G00fY2")
+      githubUser = fetchGitHubUser(BuildKonfig.githubUser)
+      githubRepos = fetchTopGitHubRepos(BuildKonfig.githubUser)
     }
 
     Layout {
@@ -49,13 +49,12 @@ fun main() {
   }
 }
 
-const val GITHUB_API_URL = "https://api.github.com"
-const val GITHUB_API_VERSION = 3
-
 suspend fun fetchGitHubUser(username: String): GitHubUser {
-  val headers = Headers().apply { append("Accept", "application/vnd.github.v$GITHUB_API_VERSION+json") }
+  val headers = Headers().apply {
+    append("Accept", "application/vnd.github.v${BuildKonfig.githubApiVersion}+json")
+  }
   val response = window
-    .fetch("$GITHUB_API_URL/users/$username", RequestInit(headers = headers))
+    .fetch("${BuildKonfig.githubApiUrl}/users/$username", RequestInit(headers = headers))
     .await()
     .json()
     .await()
@@ -72,9 +71,14 @@ suspend fun fetchGitHubUser(username: String): GitHubUser {
  * page: Page number of the results to fetch (default 1)
  */
 suspend fun fetchTopGitHubRepos(username: String): List<GitHubRepo> {
-  val headers = Headers().apply { append("Accept", "application/vnd.github.v$GITHUB_API_VERSION+json") }
+  val headers = Headers().apply {
+    append("Accept", "application/vnd.github.v${BuildKonfig.githubApiVersion}+json")
+  }
   val response = window
-    .fetch("$GITHUB_API_URL/users/$username/repos?sort=updated&per_page=100", RequestInit(headers = headers))
+    .fetch(
+      "${BuildKonfig.githubApiUrl}/users/$username/repos?sort=updated&per_page=100",
+      RequestInit(headers = headers)
+    )
     .await()
     .json()
     .await()
