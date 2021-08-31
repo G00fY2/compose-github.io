@@ -2,7 +2,7 @@
 
 package io.github.g00fy2.model.entities
 
-external interface GitHubUser {
+external interface GitHubOwner {
   val login: String
   val id: Int
   val node_id: String
@@ -21,18 +21,4 @@ external interface GitHubUser {
   val received_events_url: String
   val type: String
   val site_admin: Boolean
-  val name: String
-  val company: String
-  val blog: String
-  val location: String
-  val email: String
-  val hireable: Boolean
-  val bio: String
-  val twitter_username: String
-  val public_repos: Int
-  val public_gists: Int
-  val followers: Int
-  val following: Int
-  val created_at: String
-  val updated_at: String
 }
