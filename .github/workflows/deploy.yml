@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  build-and-deploy:
+    name: Build and deploy to GitHub Pages
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build webpack production bundle
+        run: ./gradlew jsBrowserProductionWebpack
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build/distributions # The folder the action should deploy.
