@@ -39,7 +39,7 @@ fun main() {
     }
 
     Layout {
-      Header()
+      Header(githubUser)
       MainContentLayout {
         Intro(githubUser)
         GithubRepos(githubRepos, githubLanguageColors)

@@ -14,9 +14,7 @@ import org.jetbrains.compose.web.attributes.target
 import org.jetbrains.compose.web.css.AlignSelf
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.alignSelf
-import org.jetbrains.compose.web.css.borderRadius
 import org.jetbrains.compose.web.css.display
-import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.whiteSpace
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Div
@@ -39,12 +37,7 @@ fun Intro(githubUser: GitHubUser?) {
           alignSelf(AlignSelf.Start)
         }
       }) {
-        Img(src = githubUser?.avatar_url ?: "", attrs = {
-          classes(AppStylesheet.composeLogo)
-          style {
-            borderRadius(50.percent)
-          }
-        })
+        Img(src = githubUser?.avatar_url ?: "", attrs = { classes(AppStylesheet.mainAvatar) })
       }
 
       Div({
