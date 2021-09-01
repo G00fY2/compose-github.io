@@ -31,6 +31,8 @@ buildConfig {
   buildConfigField("String", "GITHUB_USER", "\"G00fY2\"")
   buildConfigField("String", "GITHUB_API_URL", "\"https://api.github.com\"")
   buildConfigField("String", "GITHUB_API_VERSION", "\"3\"")
+  // to increase rate limit add composeGitHubAuth with 'user:token' as base64 in local properties
+  buildConfigField("String", "GITHUB_API_DEV_AUTH", findProperty("composeGitHubAuth") as String? ?: "")
 }
 
 // kotlin compiler options

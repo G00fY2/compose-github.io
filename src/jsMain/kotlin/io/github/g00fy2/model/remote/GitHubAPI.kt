@@ -8,8 +8,14 @@ import kotlinx.coroutines.await
 import org.w3c.fetch.Headers
 import org.w3c.fetch.RequestInit
 
-private fun getHeaders() =
-  Headers().apply { append("Accept", "application/vnd.github.v${BuildConfig.GITHUB_API_VERSION}+json") }
+private fun getHeaders(): Headers {
+  return Headers().apply {
+    append("Accept", "application/vnd.github.v${BuildConfig.GITHUB_API_VERSION}+json")
+    if (BuildConfig.GITHUB_API_DEV_AUTH.isNotEmpty()) {
+      append("Authorization", "Basic ${BuildConfig.GITHUB_API_DEV_AUTH}")
+    }
+  }
+}
 
 suspend fun fetchGitHubUser(username: String): GitHubUser {
   val response = window
