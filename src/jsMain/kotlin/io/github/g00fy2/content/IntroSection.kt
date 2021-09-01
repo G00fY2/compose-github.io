@@ -16,11 +16,8 @@ import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.alignSelf
 import org.jetbrains.compose.web.css.borderRadius
 import org.jetbrains.compose.web.css.display
-import org.jetbrains.compose.web.css.height
 import org.jetbrains.compose.web.css.percent
-import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.whiteSpace
-import org.jetbrains.compose.web.css.width
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H1
@@ -59,7 +56,7 @@ fun Intro(githubUser: GitHubUser?) {
         )
       }) {
         H1(attrs = { classes(WtText.wtHero) }) {
-          Text("Compose for ")
+          Text(githubUser?.name ?: "")
           Span({
             classes(WtText.wtHero)
             style {
@@ -67,10 +64,8 @@ fun Intro(githubUser: GitHubUser?) {
               whiteSpace("nowrap")
             }
           }) {
-            Text(githubUser?.name ?: "")
-
             Span(attrs = { classes(AppStylesheet.composeTitleTag) }) {
-              Text("Technology preview")
+              Text(githubUser?.login ?: "")
             }
           }
         }
@@ -101,15 +96,6 @@ private fun IntroAboutComposeWeb(githubUser: GitHubUser?) {
     }) {
       P({ classes(WtText.wtSubtitle2, WtOffset.wtTopOffset24) }) {
         Text(githubUser?.bio ?: "")
-
-        A(href = "https://developer.android.com/jetpack/compose", attrs = {
-          classes(WtText.wtLink)
-          target(ATarget.Blank)
-        }) {
-          Text("modern toolkit")
-        }
-
-        Text(" and brought to you by JetBrains")
       }
 
       P({
@@ -122,8 +108,6 @@ private fun IntroAboutComposeWeb(githubUser: GitHubUser?) {
         )
       }
 
-      ComposeWebStatusMessage()
-
       A(
         attrs = {
           classes(WtText.wtButton, WtOffset.wtTopOffset24)
@@ -132,39 +116,6 @@ private fun IntroAboutComposeWeb(githubUser: GitHubUser?) {
         href = "https://github.com/jetbrains/compose-jb"
       ) {
         Text("Explore on GitHub")
-      }
-    }
-  }
-}
-
-@Composable
-private fun ComposeWebStatusMessage() {
-  Div({
-    classes(WtRows.wtRow, WtRows.wtRowSizeXs, WtOffset.wtTopOffset24)
-  }) {
-    Div({
-      classes(WtCols.wtColInline)
-    }) {
-      Img(src = "ic_info.svg", attrs = {
-        style {
-          width(24.px)
-          height(24.px)
-        }
-      })
-    }
-
-    Div({
-      classes(WtCols.wtColAutoFill)
-    }) {
-      P({
-        classes(WtText.wtText3)
-      }) {
-        Text(
-          "With its current status Technology Preview, Compose for Web " +
-            "is not production-ready, and should only be used in experiments. " +
-            "We are hard at work to bring you great learning materials, tutorials, " +
-            "and documentation, and optimize the performance of Compose for Web in the future!"
-        )
       }
     }
   }

@@ -51,9 +51,6 @@ object AppCSSVariables {
 }
 
 object AppStylesheet : StyleSheet() {
-  val headerLogo by style {
-    maxWidth(10.percent)
-  }
   val composeLogo by style {
     maxWidth(100.percent)
   }

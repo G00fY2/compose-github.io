@@ -4,6 +4,7 @@ import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.StyleSheet
 import org.jetbrains.compose.web.css.backgroundColor
 import org.jetbrains.compose.web.css.boxSizing
+import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.paddingBottom
 import org.jetbrains.compose.web.css.paddingTop
 import org.jetbrains.compose.web.css.px
@@ -28,6 +29,7 @@ object WtSections : StyleSheet(AppStylesheet) {
   }
 
   val wtSectionBgGrayDark by style {
+    padding(8.px)
     backgroundColor(Color("#323236"))
     backgroundColor(AppCSSVariables.wtColorGreyDark.value())
   }

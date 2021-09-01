@@ -1,7 +1,6 @@
 package io.github.g00fy2.content
 
 import androidx.compose.runtime.Composable
-import io.github.g00fy2.style.AppStylesheet
 import io.github.g00fy2.style.WtCols
 import io.github.g00fy2.style.WtContainers
 import io.github.g00fy2.style.WtRows
@@ -35,8 +34,8 @@ private fun Logo() {
   }) {
     A(attrs = {
       target(ATarget.Blank)
-    }, href = "https://www.jetbrains.com/") {
-      Img(src = "i1.svg", attrs = { classes(AppStylesheet.headerLogo) })
+    }, href = "https://github.com/G00fY2/compose-github.io") {
+      Img(src = "ic_github.svg")
     }
   }
 }
