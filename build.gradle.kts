@@ -20,7 +20,7 @@ kotlin {
       dependencies {
         implementation(compose.web.core)
         implementation(compose.runtime)
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
       }
     }
   }
