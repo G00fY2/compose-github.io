@@ -5,6 +5,7 @@ import io.github.g00fy2.components.Card
 import io.github.g00fy2.components.ContainerInSection
 import io.github.g00fy2.model.entities.GitHubLanguage
 import io.github.g00fy2.model.entities.GitHubRepo
+import io.github.g00fy2.model.remote.PROJECT_COUNT
 import io.github.g00fy2.style.WtCols
 import io.github.g00fy2.style.WtOffset
 import io.github.g00fy2.style.WtRows
@@ -20,37 +21,19 @@ import org.jetbrains.compose.web.dom.Ul
 fun GithubRepos(githubRepos: List<GitHubRepo>, githubLanguageColors: List<GitHubLanguage>) {
   ContainerInSection(WtSections.wtSectionBgGrayLight) {
     H2(attrs = { classes(WtText.wtH2) }) {
-      Text("Building user interfaces with Compose for Web")
+      Text("My OpenSource projects")
     }
 
     Div(attrs = {
-      classes(WtRows.wtRow, WtRows.wtRowSizeM)
+      classes(WtCols.wtCol6, WtCols.wtColMd6, WtCols.wtColSm12, WtOffset.wtTopOffset24)
     }) {
-      Div(attrs = {
-        classes(WtCols.wtCol6, WtCols.wtColMd6, WtCols.wtColSm12, WtOffset.wtTopOffset24)
+      P(attrs = {
+        classes(WtText.wtText1)
       }) {
-        P(attrs = {
-          classes(WtText.wtText1)
-        }) {
-          Text(
-            "Compose for Web allows you to build reactive user interfaces for the web in Kotlin, using the " +
-              "concepts and APIs of Jetpack Compose to express the state, behavior, and logic of your application."
-          )
-        }
-      }
-
-      Div(attrs = {
-        classes(WtCols.wtCol6, WtCols.wtColMd6, WtCols.wtColSm12, WtOffset.wtTopOffset24)
-      }) {
-        P(attrs = {
-          classes(WtText.wtText1)
-        }) {
-          Text(
-            "Compose for Web provides multiple ways of declaring user interfaces in Kotlin code, allowing you " +
-              "to have full control over your website layout with a declarative DOM API, or use versions of the " +
-              "widgets you already know from Jetpack Compose for Desktop and Android.\n"
-          )
-        }
+        Text(
+          "GitHub repositories of projects that I've build. Shows the current top $PROJECT_COUNT of the " +
+            "repositories ordered by stars."
+        )
       }
     }
 
@@ -60,7 +43,7 @@ fun GithubRepos(githubRepos: List<GitHubRepo>, githubLanguageColors: List<GitHub
       githubRepos.map {
         GithubRepoCard(
           title = it.full_name,
-          url = it.url,
+          url = it.html_url,
           description = it.description,
           primaryLanguageName = it.language,
           primaryLanguageColor = githubLanguageColors.firstOrNull { lang -> lang.name == it.language }?.color,
@@ -74,7 +57,7 @@ fun GithubRepos(githubRepos: List<GitHubRepo>, githubLanguageColors: List<GitHub
 
 @Composable
 private fun CardWithList(card: GithubRepoCard) {
-  Card(title = card.title) {
+  Card(title = card.title, card.url) {
     Ul(attrs = {
       classes(WtText.wtText2)
     }) {

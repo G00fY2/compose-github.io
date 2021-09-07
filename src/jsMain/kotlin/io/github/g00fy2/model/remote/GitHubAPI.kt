@@ -8,6 +8,8 @@ import kotlinx.coroutines.await
 import org.w3c.fetch.Headers
 import org.w3c.fetch.RequestInit
 
+const val PROJECT_COUNT = 6
+
 private fun getHeaders(): Headers {
   return Headers().apply {
     append("Accept", "application/vnd.github.v${BuildConfig.GITHUB_API_VERSION}+json")
@@ -35,7 +37,7 @@ suspend fun fetchGitHubUser(username: String): GitHubUser {
  * per_page: Results per page (max 100, default 30)
  * page: Page number of the results to fetch (default 1)
  */
-suspend fun fetchTopGitHubRepos(username: String, filterArchived: Boolean = true, count: Int = 6): List<GitHubRepo> {
+suspend fun fetchTopGitHubRepos(username: String, filterArchived: Boolean = true): List<GitHubRepo> {
   val response = window
     .fetch(
       "${BuildConfig.GITHUB_API_URL}/users/$username/repos?sort=updated&per_page=100",
@@ -48,5 +50,5 @@ suspend fun fetchTopGitHubRepos(username: String, filterArchived: Boolean = true
   return response.unsafeCast<Array<GitHubRepo>>()
     .sortedByDescending { it.stargazers_count }
     .filterNot { it.archived && filterArchived }
-    .take(count)
+    .take(PROJECT_COUNT)
 }

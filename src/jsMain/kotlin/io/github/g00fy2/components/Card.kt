@@ -5,25 +5,31 @@ import io.github.g00fy2.style.WtCards
 import io.github.g00fy2.style.WtCols
 import io.github.g00fy2.style.WtOffset
 import io.github.g00fy2.style.WtText
+import org.jetbrains.compose.web.attributes.ATarget
+import org.jetbrains.compose.web.attributes.target
+import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H3
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-private fun CardTitle(title: String, darkTheme: Boolean = false) {
-  H3({
-    classes(WtText.wtH3)
-    if (darkTheme) {
-      classes(WtText.wtH3ThemeDark)
-    }
+private fun CardTitle(title: String, link: String) {
+  A(href = link, attrs = {
+    target(ATarget.Blank)
+    classes(WtText.wtLink)
   }) {
-    Text(title)
+    H3({
+      classes(if (link.isEmpty()) WtText.wtH3ThemeDark else WtText.wtH3)
+    }) {
+      Text(title)
+    }
   }
 }
 
 @Composable
 fun Card(
   title: String,
+  link: String,
   darkTheme: Boolean = false,
   wtExtraStyleClasses: List<String> = listOf(WtCols.wtCol6, WtCols.wtColMd6, WtCols.wtColSm12),
   content: @Composable () -> Unit
@@ -37,7 +43,7 @@ fun Card(
     }) {
 
       Div({ classes(WtCards.wtVerticalFlexGrow) }) {
-        CardTitle(title = title, darkTheme = darkTheme)
+        CardTitle(title = title, link = link)
         content()
       }
     }
@@ -47,11 +53,13 @@ fun Card(
 @Composable
 fun CardDark(
   title: String,
+  link: String,
   wtExtraStyleClasses: List<String> = listOf(WtCols.wtCol6, WtCols.wtColMd6, WtCols.wtColSm12),
   content: @Composable () -> Unit
 ) {
   Card(
     title = title,
+    link = link,
     darkTheme = true,
     wtExtraStyleClasses = wtExtraStyleClasses,
     content = content

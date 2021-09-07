@@ -49,7 +49,7 @@ fun Intro(githubUser: GitHubUser?) {
         )
       }) {
         H1(attrs = { classes(WtText.wtHero) }) {
-          Text(githubUser?.name ?: "")
+          Text("Hey, I'm ${githubUser?.name ?: ""}")
           Span({
             classes(WtText.wtHero)
             style {

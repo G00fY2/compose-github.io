@@ -168,7 +168,7 @@ object WtText : StyleSheet(AppStylesheet) {
   }
 
   val wtH3 by style {
-    color(Color("#27282c"))
+    // color(Color("#27282c"))
     fontSize(21.px)
     fontSize(AppCSSVariables.wtH3FontSize.value(20.px))
     letterSpacing("normal")
