@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
-  kotlin("multiplatform") version "1.5.30"
-  id("org.jetbrains.compose") version "1.0.0-alpha4-build348"
+  kotlin("multiplatform") version "1.5.31"
+  id("org.jetbrains.compose") version "1.0.0-alpha4-build366"
   id("com.github.gmazzo.buildconfig") version "3.0.3"
   id("io.gitlab.arturbosch.detekt") version "1.18.1"
   id("com.github.ben-manes.versions") version "0.39.0"
