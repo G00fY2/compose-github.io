@@ -44,7 +44,7 @@ tasks.withType<Kotlin2JsCompile>().configureEach {
 
 // explicitly set the webpack-dev-server version
 extensions.configure<NodeJsRootExtension> {
-  versions.webpackDevServer.version = "4.2.1"
+  versions.webpackDevServer.version = "4.3.1"
 }
 
 // configure detekt
