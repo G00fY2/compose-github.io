@@ -6,7 +6,7 @@ plugins {
   kotlin("multiplatform") version "1.5.31"
   id("org.jetbrains.compose") version "1.0.0-rc4"
   id("com.github.gmazzo.buildconfig") version "3.0.3"
-  id("io.gitlab.arturbosch.detekt") version "1.19.0-RC2"
+  id("io.gitlab.arturbosch.detekt") version "1.19.0"
   id("com.github.ben-manes.versions") version "0.39.0"
 }
 
@@ -55,7 +55,7 @@ extensions.configure<DetektExtension> {
   buildUponDefaultConfig = true
 }
 dependencies {
-  "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.18.1")
+  "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
 }
 
 // configure dependency updates
