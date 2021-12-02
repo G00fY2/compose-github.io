@@ -24,7 +24,6 @@ import org.jetbrains.compose.web.css.outline
 import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
-import org.jetbrains.compose.web.css.selectors.hover
 import org.jetbrains.compose.web.css.textDecoration
 import org.jetbrains.compose.web.css.value
 
