@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
-  kotlin("multiplatform") version "1.5.31"
-  id("org.jetbrains.compose") version "1.0.0"
+  kotlin("multiplatform") version "1.6.10"
+  id("org.jetbrains.compose") version "1.0.1"
   id("com.github.gmazzo.buildconfig") version "3.0.3"
   id("io.gitlab.arturbosch.detekt") version "1.19.0"
   id("com.github.ben-manes.versions") version "0.39.0"
@@ -20,7 +20,7 @@ kotlin {
       dependencies {
         implementation(compose.web.core)
         implementation(compose.runtime)
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
       }
     }
   }
@@ -44,13 +44,13 @@ tasks.withType<Kotlin2JsCompile>().configureEach {
 
 // explicitly set the webpack-dev-server version
 extensions.configure<NodeJsRootExtension> {
-  versions.webpackDevServer.version = "4.6.0"
+  versions.webpackDevServer.version = "4.7.1"
   versions.webpackCli.version = "4.9.1"
 }
 
 // configure detekt
 extensions.configure<DetektExtension> {
-  toolVersion = "1.18.1"
+  toolVersion = "1.19.0"
   config = files("$rootDir/detekt.yml")
   buildUponDefaultConfig = true
 }
@@ -61,4 +61,13 @@ dependencies {
 // configure dependency updates
 tasks.dependencyUpdates.configure {
   gradleReleaseChannel = "current"
+  rejectVersionIf { releaseType(candidate.version) < releaseType(currentVersion) }
+}
+
+fun releaseType(version: String): Int {
+  val sortedReleaseQualifiers = listOf("alpha", "beta", "m", "rc")
+  val index = sortedReleaseQualifiers.indexOfFirst {
+    version.matches(".*[.\\-]$it[.\\-\\d]*.*".toRegex(RegexOption.IGNORE_CASE))
+  }
+  return if (index < 0) sortedReleaseQualifiers.size else index
 }
