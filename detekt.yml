@@ -1,12 +1,14 @@
 formatting:
-  ImportOrdering:
-    active: true
   Indentation:
     active: false
   FinalNewline:
     insertFinalNewLine: false
   ParameterListWrapping:
     indentSize: 2
+
+naming:
+  FunctionNaming:
+    ignoreAnnotated: [ 'Composable' ]
 
 performance:
   SpreadOperator:
