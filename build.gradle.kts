@@ -3,11 +3,11 @@ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
-  kotlin("multiplatform") version "1.6.10"
-  id("org.jetbrains.compose") version "1.0.1"
+  kotlin("multiplatform") version "1.6.21"
+  id("org.jetbrains.compose") version "1.2.0-alpha01-dev675"
   id("com.github.gmazzo.buildconfig") version "3.0.3"
-  id("io.gitlab.arturbosch.detekt") version "1.19.0"
-  id("com.github.ben-manes.versions") version "0.39.0"
+  id("io.gitlab.arturbosch.detekt") version "1.20.0"
+  id("com.github.ben-manes.versions") version "0.42.0"
 }
 
 kotlin {
@@ -20,7 +20,7 @@ kotlin {
       dependencies {
         implementation(compose.web.core)
         implementation(compose.runtime)
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
       }
     }
   }
@@ -44,18 +44,18 @@ tasks.withType<Kotlin2JsCompile>().configureEach {
 
 // explicitly set the webpack-dev-server version
 extensions.configure<NodeJsRootExtension> {
-  versions.webpackDevServer.version = "4.7.1"
-  versions.webpackCli.version = "4.9.1"
+  versions.webpackDevServer.version = "4.8.1"
+  versions.webpackCli.version = "4.9.2"
 }
 
 // configure detekt
 extensions.configure<DetektExtension> {
-  toolVersion = "1.19.0"
+  toolVersion = "1.20.0"
   config = files("$rootDir/detekt.yml")
   buildUponDefaultConfig = true
 }
 dependencies {
-  "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
+  "detektPlugins"("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
 }
 
 // configure dependency updates
