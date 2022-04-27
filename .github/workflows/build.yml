@@ -11,18 +11,18 @@ on:
 jobs:
   detekt:
     name: Run detekt
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run detekt with ktlint
         run: ./gradlew detektJsMain
 
   build_project:
     name: Build KotlinJS project
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: KotlinJS project
         run: ./gradlew jsBrowserDistribution
