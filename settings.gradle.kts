@@ -1,6 +1,7 @@
 rootProject.name = "compose-github.io"
 
 dependencyResolutionManagement {
+  @Suppress("UnstableApiUsage")
   repositories {
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
@@ -10,8 +11,8 @@ dependencyResolutionManagement {
 
 pluginManagement {
   repositories {
-    gradlePluginPortal()
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    gradlePluginPortal()
   }
 }
