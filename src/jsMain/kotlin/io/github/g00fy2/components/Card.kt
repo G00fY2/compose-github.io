@@ -41,7 +41,6 @@ fun Card(
     Div({
       classes(WtCards.wtCardSection, WtCards.wtVerticalFlex)
     }) {
-
       Div({ classes(WtCards.wtVerticalFlexGrow) }) {
         CardTitle(title = title, link = link)
         content()

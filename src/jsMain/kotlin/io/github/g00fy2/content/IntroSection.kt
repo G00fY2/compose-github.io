@@ -30,7 +30,6 @@ fun Intro(githubUser: GitHubUser?) {
     Div({
       classes(WtRows.wtRow, WtRows.wtRowSizeM, WtRows.wtRowSmAlignItemsCenter)
     }) {
-
       Div({
         classes(WtCols.wtCol2, WtCols.wtColMd3)
         style {
@@ -83,7 +82,6 @@ private fun IntroAboutComposeWeb(githubUser: GitHubUser?) {
   Div({
     classes(WtRows.wtRow, WtRows.wtRowSizeM)
   }) {
-
     Div({
       classes(WtCols.wtCol9, WtCols.wtColMd9, WtCols.wtColSm12)
     }) {
