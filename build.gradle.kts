@@ -7,7 +7,6 @@ plugins {
   alias(libs.plugins.compose)
   alias(libs.plugins.buildconfig)
   alias(libs.plugins.detekt)
-  alias(libs.plugins.gradleVersions)
 }
 
 kotlin {
@@ -56,18 +55,4 @@ extensions.configure<DetektExtension> {
 }
 dependencies {
   add("detektPlugins", rootProject.libs.detektFormatting)
-}
-
-// configure dependency updates
-tasks.dependencyUpdates.configure {
-  gradleReleaseChannel = "current"
-  rejectVersionIf { releaseType(candidate.version) < releaseType(currentVersion) }
-}
-
-fun releaseType(version: String): Int {
-  val sortedReleaseQualifiers = listOf("alpha", "beta", "m", "rc")
-  val index = sortedReleaseQualifiers.indexOfFirst {
-    version.matches(".*[.\\-]$it[.\\-\\d]*.*".toRegex(RegexOption.IGNORE_CASE))
-  }
-  return if (index < 0) sortedReleaseQualifiers.size else index
 }
