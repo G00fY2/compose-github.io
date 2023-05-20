@@ -23,7 +23,6 @@ fun JoinUs() {
       Div(attrs = {
         classes(WtCols.wtCol9, WtCols.wtColMd11, WtCols.wtColSm12)
       }) {
-
         P(attrs = {
           classes(WtText.wtSubtitle2)
         }) {

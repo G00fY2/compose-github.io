@@ -105,7 +105,7 @@ fun GetStarted() {
       getCards().forEach {
         CardDark(
           title = it.title,
-          links = it.links,
+          link = "",
           wtExtraStyleClasses = listOf(WtCols.wtCol4, WtCols.wtColMd6, WtCols.wtColSm12)
         ) {
           CardContent(it.content)

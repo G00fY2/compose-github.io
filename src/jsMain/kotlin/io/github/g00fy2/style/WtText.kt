@@ -1,24 +1,29 @@
 package io.github.g00fy2.style
 
+import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.StyleSheet
+import org.jetbrains.compose.web.css.alignItems
 import org.jetbrains.compose.web.css.backgroundColor
+import org.jetbrains.compose.web.css.border
 import org.jetbrains.compose.web.css.borderRadius
 import org.jetbrains.compose.web.css.color
 import org.jetbrains.compose.web.css.display
 import org.jetbrains.compose.web.css.fontSize
 import org.jetbrains.compose.web.css.fontWeight
+import org.jetbrains.compose.web.css.justifyContent
 import org.jetbrains.compose.web.css.letterSpacing
 import org.jetbrains.compose.web.css.lineHeight
 import org.jetbrains.compose.web.css.marginLeft
 import org.jetbrains.compose.web.css.marginRight
 import org.jetbrains.compose.web.css.media
 import org.jetbrains.compose.web.css.mediaMaxWidth
+import org.jetbrains.compose.web.css.outline
 import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
-import org.jetbrains.compose.web.css.selectors.hover
 import org.jetbrains.compose.web.css.textDecoration
 import org.jetbrains.compose.web.css.value
 
@@ -162,7 +167,7 @@ object WtText : StyleSheet(AppStylesheet) {
   }
 
   val wtH3 by style {
-    color(Color("#27282c"))
+    // color(Color("#27282c"))
     fontSize(21.px)
     fontSize(AppCSSVariables.wtH3FontSize.value(20.px))
     letterSpacing("normal")
@@ -188,13 +193,27 @@ object WtText : StyleSheet(AppStylesheet) {
     display(DisplayStyle.InlineBlock)
     textDecoration("none")
     borderRadius(24.px)
-    padding(12.px, 32.px)
+    padding(6.px, 16.px)
     lineHeight(24.px)
     fontWeight(400)
     property("width", "fit-content")
 
     hover(self) style {
       backgroundColor(rgba(22, 125, 255, .8))
+    }
+  }
+
+  val wtGitHubButton by style {
+    display(DisplayStyle.LegacyInlineFlex)
+    justifyContent(JustifyContent.Center)
+    alignItems(AlignItems.Center)
+    backgroundColor(Color("transparent"))
+    border(0.px)
+
+    outline("none")
+
+    hover(self) style {
+      backgroundColor(rgba(255, 255, 255, 0.1))
     }
   }
 

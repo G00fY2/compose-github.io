@@ -35,5 +35,4 @@ object WtOffset : StyleSheet(AppStylesheet) {
       }
     }
   }
-
 }

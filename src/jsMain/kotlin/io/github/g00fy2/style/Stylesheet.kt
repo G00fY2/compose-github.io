@@ -21,6 +21,7 @@ import org.jetbrains.compose.web.css.maxWidth
 import org.jetbrains.compose.web.css.media
 import org.jetbrains.compose.web.css.mediaMaxWidth
 import org.jetbrains.compose.web.css.padding
+import org.jetbrains.compose.web.css.paddingRight
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.position
 import org.jetbrains.compose.web.css.px
@@ -51,10 +52,18 @@ object AppCSSVariables {
 }
 
 object AppStylesheet : StyleSheet() {
-  val headerLogo by style {
-    maxWidth(10.percent)
+  val headerAvatar by style {
+    borderRadius(50.percent)
+    maxWidth(32.px)
   }
-  val composeLogo by style {
+
+  val githubHeaderLogo by style {
+    paddingRight(8.px)
+    maxWidth(24.px)
+  }
+
+  val mainAvatar by style {
+    borderRadius(50.percent)
     maxWidth(100.percent)
   }
 
@@ -88,7 +97,7 @@ object AppStylesheet : StyleSheet() {
       )
     }
 
-    CSSSelector.Universal style {
+    universal style {
       AppCSSVariables.wtColorGreyLight(Color("#f4f4f4"))
       AppCSSVariables.wtColorGreyDark(Color("#323236"))
       AppCSSVariables.wtOffsetTopUnit(24.px)
@@ -97,13 +106,13 @@ object AppStylesheet : StyleSheet() {
     }
 
     media(mediaMaxWidth(640.px)) {
-      CSSSelector.Universal style {
+      universal style {
         AppCSSVariables.wtOffsetTopUnit(16.px)
         AppCSSVariables.wtFlowUnit(16.px)
       }
     }
 
-    CSSSelector.Attribute(
+    attr(
       name = "class",
       value = "wtCol",
       operator = CSSSelector.Attribute.Operator.Contains

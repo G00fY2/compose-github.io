@@ -13,34 +13,23 @@ import org.jetbrains.compose.web.dom.H3
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-private fun CardTitle(title: String, darkTheme: Boolean = false) {
-  H3({
-    classes(WtText.wtH3)
-    if (darkTheme) {
-      classes(WtText.wtH3ThemeDark)
-    }
+private fun CardTitle(title: String, link: String) {
+  A(href = link, attrs = {
+    target(ATarget.Blank)
+    classes(WtText.wtLink)
   }) {
-    Text(title)
-  }
-}
-
-@Composable
-private fun CardLink(link: LinkOnCard) {
-  A(
-    attrs = {
-      classes(WtText.wtLink, WtOffset.wtTopOffset24)
-      target(ATarget.Blank)
-    },
-    href = link.linkUrl
-  ) {
-    Text(link.linkText)
+    H3({
+      classes(if (link.isEmpty()) WtText.wtH3ThemeDark else WtText.wtH3)
+    }) {
+      Text(title)
+    }
   }
 }
 
 @Composable
 fun Card(
   title: String,
-  links: List<LinkOnCard>,
+  link: String,
   darkTheme: Boolean = false,
   wtExtraStyleClasses: List<String> = listOf(WtCols.wtCol6, WtCols.wtColMd6, WtCols.wtColSm12),
   content: @Composable () -> Unit
@@ -52,14 +41,9 @@ fun Card(
     Div({
       classes(WtCards.wtCardSection, WtCards.wtVerticalFlex)
     }) {
-
       Div({ classes(WtCards.wtVerticalFlexGrow) }) {
-        CardTitle(title = title, darkTheme = darkTheme)
+        CardTitle(title = title, link = link)
         content()
-      }
-
-      links.forEach {
-        CardLink(it)
       }
     }
   }
@@ -68,13 +52,13 @@ fun Card(
 @Composable
 fun CardDark(
   title: String,
-  links: List<LinkOnCard>,
+  link: String,
   wtExtraStyleClasses: List<String> = listOf(WtCols.wtCol6, WtCols.wtColMd6, WtCols.wtColSm12),
   content: @Composable () -> Unit
 ) {
   Card(
     title = title,
-    links = links,
+    link = link,
     darkTheme = true,
     wtExtraStyleClasses = wtExtraStyleClasses,
     content = content

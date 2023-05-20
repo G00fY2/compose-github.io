@@ -48,7 +48,6 @@ fun PageFooter() {
             flexWrap(FlexWrap.Wrap)
           }
         }) {
-
           Div({
             classes(WtCols.wtColInline)
           }) {
