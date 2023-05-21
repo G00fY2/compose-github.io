@@ -1,6 +1,7 @@
+@file:Suppress("VariableNaming", "PropertyName")
+
 package io.github.g00fy2.model.entities
 
-@Suppress("PropertyName")
 external interface GitHubRepo {
   val id: Long
   val node_id: String
