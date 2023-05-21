@@ -1,6 +1,6 @@
-package io.github.g00fy2.model.local
+package io.github.g00fy2.data.local
 
-import io.github.g00fy2.model.entities.GitHubLanguage
+import io.github.g00fy2.data.entities.GitHubLanguage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

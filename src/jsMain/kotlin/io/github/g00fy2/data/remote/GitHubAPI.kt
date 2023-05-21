@@ -1,9 +1,9 @@
-package io.github.g00fy2.model.remote
+package io.github.g00fy2.data.remote
 
 import io.github.g00fy2.BuildConfig
-import io.github.g00fy2.model.entities.GitHubRepo
-import io.github.g00fy2.model.entities.GitHubUser
-import io.github.g00fy2.model.entities.GitSearchResult
+import io.github.g00fy2.data.entities.GitHubRepo
+import io.github.g00fy2.data.entities.GitHubUser
+import io.github.g00fy2.data.entities.GitSearchResult
 import kotlinx.browser.window
 import kotlinx.coroutines.await
 import org.w3c.fetch.DEFAULT

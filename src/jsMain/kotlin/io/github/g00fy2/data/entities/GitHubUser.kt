@@ -1,6 +1,6 @@
 @file:Suppress("VariableNaming", "PropertyName")
 
-package io.github.g00fy2.model.entities
+package io.github.g00fy2.data.entities
 
 external interface GitHubUser {
   val login: String

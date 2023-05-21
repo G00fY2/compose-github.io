@@ -3,9 +3,9 @@ package io.github.g00fy2.content
 import androidx.compose.runtime.Composable
 import io.github.g00fy2.components.Card
 import io.github.g00fy2.components.ContainerInSection
-import io.github.g00fy2.model.entities.GitHubLanguage
-import io.github.g00fy2.model.entities.GitHubRepo
-import io.github.g00fy2.model.remote.PROJECT_COUNT
+import io.github.g00fy2.data.entities.GitHubLanguage
+import io.github.g00fy2.data.entities.GitHubRepo
+import io.github.g00fy2.data.remote.PROJECT_COUNT
 import io.github.g00fy2.style.WtCols
 import io.github.g00fy2.style.WtOffset
 import io.github.g00fy2.style.WtRows
