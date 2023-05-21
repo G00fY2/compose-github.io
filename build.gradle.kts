@@ -19,7 +19,7 @@ kotlin {
       dependencies {
         implementation(compose.html.core)
         implementation(compose.runtime)
-        implementation(libs.coroutines.core)
+        implementation(libs.coroutines.core.js)
       }
     }
   }
