@@ -32,10 +32,16 @@ fun main() {
     var githubRepos by remember { mutableStateOf(emptyList<GitHubRepo>()) }
     var githubLanguageColors by remember { mutableStateOf(emptyList<GitHubLanguage>()) }
 
-    LaunchedEffect(true) {
-      githubUser = fetchGitHubUser(BuildConfig.GITHUB_USER)
-      githubRepos = fetchTopGitHubRepos(BuildConfig.GITHUB_USER)
-      githubLanguageColors = loadGitHubLanguages()
+    LaunchedEffect(Unit) {
+      fetchGitHubUser(BuildConfig.GITHUB_USER)
+        .onSuccess { githubUser = it }
+        .onFailure { it.printStackTrace() }
+      fetchTopGitHubRepos(BuildConfig.GITHUB_USER)
+        .onSuccess { githubRepos = it }
+        .onFailure { it.printStackTrace() }
+      loadGitHubLanguages()
+        .onSuccess { githubLanguageColors = it }
+        .onFailure { it.printStackTrace() }
     }
 
     Layout {
