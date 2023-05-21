@@ -7,7 +7,6 @@ plugins {
   alias(libs.plugins.compose)
   alias(libs.plugins.buildconfig)
   alias(libs.plugins.detekt)
-  alias(libs.plugins.gradleVersions)
 }
 
 kotlin {
@@ -20,7 +19,7 @@ kotlin {
       dependencies {
         implementation(compose.html.core)
         implementation(compose.runtime)
-        implementation(libs.coroutines.core)
+        implementation(libs.coroutines.core.js)
       }
     }
   }
@@ -30,7 +29,7 @@ buildConfig {
   packageName("io.github.g00fy2")
   buildConfigField("String", "GITHUB_USER", "\"G00fY2\"")
   buildConfigField("String", "GITHUB_API_URL", "\"https://api.github.com\"")
-  buildConfigField("String", "GITHUB_API_VERSION", "\"3\"")
+  buildConfigField("String", "GITHUB_API_VERSION", "\"2022-11-28\"")
   // to increase rate limit add composeGitHubAuth with 'user:token' as base64 in local properties
   buildConfigField("String", "GITHUB_API_DEV_AUTH", findProperty("composeGitHubAuth") as String? ?: "\"\"")
 }
@@ -56,18 +55,4 @@ extensions.configure<DetektExtension> {
 }
 dependencies {
   add("detektPlugins", rootProject.libs.detektFormatting)
-}
-
-// configure dependency updates
-tasks.dependencyUpdates.configure {
-  gradleReleaseChannel = "current"
-  rejectVersionIf { releaseType(candidate.version) < releaseType(currentVersion) }
-}
-
-fun releaseType(version: String): Int {
-  val sortedReleaseQualifiers = listOf("alpha", "beta", "m", "rc")
-  val index = sortedReleaseQualifiers.indexOfFirst {
-    version.matches(".*[.\\-]$it[.\\-\\d]*.*".toRegex(RegexOption.IGNORE_CASE))
-  }
-  return if (index < 0) sortedReleaseQualifiers.size else index
 }

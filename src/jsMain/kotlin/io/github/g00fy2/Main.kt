@@ -14,12 +14,12 @@ import io.github.g00fy2.content.Header
 import io.github.g00fy2.content.Intro
 import io.github.g00fy2.content.JoinUs
 import io.github.g00fy2.content.PageFooter
-import io.github.g00fy2.model.entities.GitHubLanguage
-import io.github.g00fy2.model.entities.GitHubRepo
-import io.github.g00fy2.model.entities.GitHubUser
-import io.github.g00fy2.model.local.loadGitHubLanguages
-import io.github.g00fy2.model.remote.fetchGitHubUser
-import io.github.g00fy2.model.remote.fetchTopGitHubRepos
+import io.github.g00fy2.data.entities.GitHubLanguage
+import io.github.g00fy2.data.entities.GitHubRepo
+import io.github.g00fy2.data.entities.GitHubUser
+import io.github.g00fy2.data.local.loadGitHubLanguages
+import io.github.g00fy2.data.remote.fetchGitHubUser
+import io.github.g00fy2.data.remote.fetchTopGitHubRepos
 import io.github.g00fy2.style.AppStylesheet
 import org.jetbrains.compose.web.css.Style
 import org.jetbrains.compose.web.renderComposable
@@ -32,10 +32,16 @@ fun main() {
     var githubRepos by remember { mutableStateOf(emptyList<GitHubRepo>()) }
     var githubLanguageColors by remember { mutableStateOf(emptyList<GitHubLanguage>()) }
 
-    LaunchedEffect(true) {
-      githubUser = fetchGitHubUser(BuildConfig.GITHUB_USER)
-      githubRepos = fetchTopGitHubRepos(BuildConfig.GITHUB_USER)
-      githubLanguageColors = loadGitHubLanguages()
+    LaunchedEffect(Unit) {
+      fetchGitHubUser(BuildConfig.GITHUB_USER)
+        .onSuccess { githubUser = it }
+        .onFailure { it.printStackTrace() }
+      fetchTopGitHubRepos(BuildConfig.GITHUB_USER)
+        .onSuccess { githubRepos = it }
+        .onFailure { it.printStackTrace() }
+      loadGitHubLanguages()
+        .onSuccess { githubLanguageColors = it }
+        .onFailure { it.printStackTrace() }
     }
 
     Layout {

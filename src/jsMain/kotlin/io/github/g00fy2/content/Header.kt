@@ -1,7 +1,7 @@
 package io.github.g00fy2.content
 
 import androidx.compose.runtime.Composable
-import io.github.g00fy2.model.entities.GitHubUser
+import io.github.g00fy2.data.entities.GitHubUser
 import io.github.g00fy2.style.AppStylesheet
 import io.github.g00fy2.style.WtCols
 import io.github.g00fy2.style.WtContainers
