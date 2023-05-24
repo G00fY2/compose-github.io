@@ -50,7 +50,7 @@ extensions.configure<NodeJsRootExtension> {
 // configure detekt
 extensions.configure<DetektExtension> {
   toolVersion = libs.versions.detekt.get()
-  config = files("$rootDir/detekt.yml")
+  config.setFrom(files("$rootDir/detekt.yml"))
   buildUponDefaultConfig = true
 }
 dependencies {
