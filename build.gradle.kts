@@ -36,8 +36,8 @@ buildConfig {
 
 // kotlin compiler options
 tasks.withType<Kotlin2JsCompile>().configureEach {
-  kotlinOptions {
-    freeCompilerArgs = freeCompilerArgs + "-progressive"
+  compilerOptions {
+    progressiveMode = true
   }
 }
 
