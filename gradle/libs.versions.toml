@@ -1,11 +1,11 @@
 [versions]
-buildconfig = "4.0.4"
-compose = "1.4.0"
-coroutines = "1.7.1"
-detekt = "1.22.0"
-kotlin = "1.8.20"
-webpackCli = "5.1.1"
-webpackDevServer = "4.15.0"
+buildconfig = "5.5.0"
+compose = "1.7.0"
+coroutines = "1.9.0"
+detekt = "1.23.7"
+kotlin = "2.0.21"
+webpackCli = "5.1.4"
+webpackDevServer = "5.1.0"
 
 [libraries]
 coroutines-core-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
@@ -13,6 +13,7 @@ detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", v
 
 [plugins]
 buildconfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildconfig" }
-compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

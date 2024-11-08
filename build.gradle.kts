@@ -3,8 +3,9 @@ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
-  alias(libs.plugins.kotlin.multiplatform)
-  alias(libs.plugins.compose)
+  alias(libs.plugins.kotlinMultiplatform)
+  alias(libs.plugins.composeCompiler)
+  alias(libs.plugins.jetbrainsCompose)
   alias(libs.plugins.buildconfig)
   alias(libs.plugins.detekt)
 }
@@ -36,8 +37,8 @@ buildConfig {
 
 // kotlin compiler options
 tasks.withType<Kotlin2JsCompile>().configureEach {
-  kotlinOptions {
-    freeCompilerArgs = freeCompilerArgs + "-progressive"
+  compilerOptions {
+    progressiveMode = true
   }
 }
 
@@ -50,7 +51,7 @@ extensions.configure<NodeJsRootExtension> {
 // configure detekt
 extensions.configure<DetektExtension> {
   toolVersion = libs.versions.detekt.get()
-  config = files("$rootDir/detekt.yml")
+  config.setFrom(files("$rootDir/detekt.yml"))
   buildUponDefaultConfig = true
 }
 dependencies {
