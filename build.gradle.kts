@@ -1,6 +1,5 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
-import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 plugins {
   alias(libs.plugins.kotlinMultiplatform)
@@ -11,9 +10,20 @@ plugins {
 }
 
 kotlin {
+  compilerOptions {
+    progressiveMode = true
+    extraWarnings = true
+  }
   js(IR) {
     browser()
     binaries.executable()
+    compilerOptions {
+      target = "es2015"
+      freeCompilerArgs.addAll(
+        // Lambda expressions that capture values are translated into in-line anonymous JavaScript functions.
+        "-Xir-generate-inline-anonymous-functions",
+      )
+    }
   }
   sourceSets {
     val jsMain by getting {
@@ -33,13 +43,6 @@ buildConfig {
   buildConfigField("String", "GITHUB_API_VERSION", "\"2022-11-28\"")
   // to increase rate limit add composeGitHubAuth with 'user:token' as base64 in local properties
   buildConfigField("String", "GITHUB_API_DEV_AUTH", findProperty("composeGitHubAuth") as String? ?: "\"\"")
-}
-
-// kotlin compiler options
-tasks.withType<Kotlin2JsCompile>().configureEach {
-  compilerOptions {
-    progressiveMode = true
-  }
 }
 
 // explicitly set the webpack-dev-server version
