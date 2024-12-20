@@ -17,6 +17,13 @@ kotlin {
   js(IR) {
     browser()
     binaries.executable()
+    compilerOptions {
+      target = "es2015"
+      freeCompilerArgs.addAll(
+        // Lambda expressions that capture values are translated into in-line anonymous JavaScript functions.
+        "-Xir-generate-inline-anonymous-functions",
+      )
+    }
   }
   sourceSets {
     val jsMain by getting {
