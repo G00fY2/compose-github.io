@@ -3,7 +3,7 @@ buildconfig = "5.5.4"
 compose = "1.7.3"
 coroutines = "1.10.1"
 detekt = "1.23.8"
-kotlin = "2.1.0"
+kotlin = "2.1.10"
 webpackCli = "6.0.1"
 webpackDevServer = "5.2.0"
 
