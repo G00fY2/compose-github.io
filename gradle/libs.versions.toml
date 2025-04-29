@@ -1,5 +1,5 @@
 [versions]
-buildconfig = "5.6.3"
+buildconfig = "5.6.4"
 compose = "1.7.3"
 coroutines = "1.10.2"
 detekt = "1.23.8"
