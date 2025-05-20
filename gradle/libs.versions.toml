@@ -1,6 +1,6 @@
 [versions]
 buildconfig = "5.6.5"
-compose = "1.7.3"
+compose = "1.8.1"
 coroutines = "1.10.2"
 detekt = "1.23.8"
 kotlin = "2.1.21"
