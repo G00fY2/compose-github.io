@@ -5,7 +5,7 @@ coroutines = "1.10.2"
 detekt = "1.23.8"
 kotlin = "2.1.21"
 webpackCli = "6.0.1"
-webpackDevServer = "5.2.0"
+webpackDevServer = "5.2.1"
 
 [libraries]
 coroutines-core-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
