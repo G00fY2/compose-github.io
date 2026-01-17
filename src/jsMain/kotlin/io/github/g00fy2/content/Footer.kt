@@ -109,7 +109,7 @@ private data class SocialLink(
   val id: String,
   val url: String,
   val title: String,
-  val iconSvg: String
+  val iconSvg: String,
 )
 
 private fun getSocialLinks(): List<SocialLink> {

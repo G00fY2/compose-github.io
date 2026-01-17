@@ -32,7 +32,7 @@ fun Card(
   link: String,
   darkTheme: Boolean = false,
   wtExtraStyleClasses: List<String> = listOf(WtCols.wtCol6, WtCols.wtColMd6, WtCols.wtColSm12),
-  content: @Composable () -> Unit
+  content: @Composable () -> Unit,
 ) {
   Div({
     classes(WtCards.wtCard, WtOffset.wtTopOffset24, *wtExtraStyleClasses.toTypedArray())
@@ -54,7 +54,7 @@ fun CardDark(
   title: String,
   link: String,
   wtExtraStyleClasses: List<String> = listOf(WtCols.wtCol6, WtCols.wtColMd6, WtCols.wtColSm12),
-  content: @Composable () -> Unit
+  content: @Composable () -> Unit,
 ) {
   Card(
     title = title,
