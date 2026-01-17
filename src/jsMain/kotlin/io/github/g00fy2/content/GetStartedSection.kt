@@ -19,7 +19,7 @@ import org.jetbrains.compose.web.dom.Text
 private data class GetStartedCardPresentation(
   val title: String,
   val content: String,
-  val links: List<LinkOnCard>
+  val links: List<LinkOnCard>,
 )
 
 private fun getCards(): List<GetStartedCardPresentation> {

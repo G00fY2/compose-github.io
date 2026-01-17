@@ -1,4 +1,4 @@
-import io.gitlab.arturbosch.detekt.extensions.DetektExtension
+import dev.detekt.gradle.extensions.DetektExtension
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 
 plugins {
@@ -14,7 +14,7 @@ kotlin {
     progressiveMode = true
     extraWarnings = true
   }
-  js(IR) {
+  js {
     browser()
     binaries.executable()
     compilerOptions {
@@ -28,8 +28,8 @@ kotlin {
   sourceSets {
     val jsMain by getting {
       dependencies {
-        implementation(compose.html.core)
-        implementation(compose.runtime)
+        implementation(libs.compose.html)
+        implementation(libs.compose.runtime)
         implementation(libs.coroutines.core.js)
       }
     }

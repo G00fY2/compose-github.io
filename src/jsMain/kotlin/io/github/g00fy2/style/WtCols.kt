@@ -15,7 +15,7 @@ import org.jetbrains.compose.web.css.selectors.CSSSelector
 fun <TBuilder> GenericStyleSheetBuilder<TBuilder>.mediaMaxWidth(
   value: CSSUnitValue,
   cssSelector: CSSSelector,
-  rulesBuild: TBuilder.() -> Unit
+  rulesBuild: TBuilder.() -> Unit,
 ) {
   media(mediaMaxWidth(value)) {
     cssSelector style rulesBuild
