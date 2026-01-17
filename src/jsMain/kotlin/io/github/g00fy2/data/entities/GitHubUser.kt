@@ -28,7 +28,6 @@ external interface GitHubUser {
   val email: String
   val hireable: Boolean
   val bio: String
-  val twitter_username: String
   val public_repos: Int
   val public_gists: Int
   val followers: Int

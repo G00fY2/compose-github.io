@@ -114,7 +114,6 @@ private data class SocialLink(
 
 private fun getSocialLinks(): List<SocialLink> {
   return listOf(
-    SocialLink("twitter", "https://twitter.com/jetbrains", "JetBrains on Twitter", "ic_twitter.svg"),
     SocialLink(
       "linkedin",
       "https://www.linkedin.com/company/jetbrains",
