@@ -4,6 +4,7 @@ compose = "1.10.0"
 coroutines = "1.10.2"
 detekt = "2.0.0-alpha.1"
 kotlin = "2.3.0"
+webpack = "5.104.1"
 webpackCli = "6.0.1"
 webpackDevServer = "5.2.3"
 
@@ -11,7 +12,7 @@ webpackDevServer = "5.2.3"
 compose-html = { module = "org.jetbrains.compose.html:html-core", version.ref = "compose" }
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
 coroutines-core-js = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js", version.ref = "coroutines" }
-detektFormatting = { module = "dev.detekt:detekt-rules-ktlint-wrapper", version.ref = "detekt" }
+detekt-ktlintWrapper = { module = "dev.detekt:detekt-rules-ktlint-wrapper", version.ref = "detekt" }
 
 [plugins]
 buildconfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildconfig" }

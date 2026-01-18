@@ -20,7 +20,7 @@ kotlin {
     compilerOptions {
       target = "es2015"
       freeCompilerArgs.addAll(
-        // Lambda expressions that capture values are translated into in-line anonymous JavaScript functions.
+        // See https://kotlinlang.org/docs/whatsnew21.html#support-for-generating-es2015-arrow-functions
         "-Xir-generate-inline-anonymous-functions",
       )
     }
@@ -48,8 +48,9 @@ buildConfig {
 
 // explicitly set the webpack-dev-server version
 extensions.configure<NodeJsRootExtension> {
-  versions.webpackDevServer.version = libs.versions.webpackDevServer.get()
+  versions.webpack.version = libs.versions.webpack.get()
   versions.webpackCli.version = libs.versions.webpackCli.get()
+  versions.webpackDevServer.version = libs.versions.webpackDevServer.get()
 }
 
 // configure detekt
@@ -59,5 +60,5 @@ extensions.configure<DetektExtension> {
   buildUponDefaultConfig = true
 }
 dependencies {
-  add("detektPlugins", rootProject.libs.detektFormatting)
+  add("detektPlugins", rootProject.libs.detekt.ktlintWrapper)
 }
