@@ -2,7 +2,7 @@
 buildconfig = "6.0.7"
 compose = "1.10.2"
 coroutines = "1.10.2"
-detekt = "2.0.0-alpha.2"
+detekt = "2.0.0-alpha.5"
 kotlin = "2.4.0"
 webpack = "5.104.1"
 webpackCli = "6.0.1"
