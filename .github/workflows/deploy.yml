@@ -21,7 +21,7 @@ jobs:
       - name: Build webpack production bundle
         run: ./gradlew jsBrowserDistribution
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4
+        uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: build/dist/js/productionExecutable # The folder the action should deploy.
